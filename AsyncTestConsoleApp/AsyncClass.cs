@@ -8,4 +8,17 @@ public class AsyncClass
         await Task.Delay(seconds*1000,token);
         Console.WriteLine($"[Thread: {Thread.CurrentThread.ManagedThreadId}] Done, let's go.");
     }
+
+    public static async Task<int> WillWaitAndReturnInt(int seconds, CancellationToken token)
+    {
+        await WillSitAndWaitForSomeTime(seconds, token);
+        return 10;
+    }
+    
+    
+    public static async Task<string> WillWaitAndReturnString(int seconds, CancellationToken token)
+    {
+        await WillSitAndWaitForSomeTime(seconds, token);
+        return "Hello!";
+    }
 }
