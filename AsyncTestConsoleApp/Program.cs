@@ -17,11 +17,11 @@ var task2 = AsyncClass.WillWaitAndReturnString(2, cancellationToken);
 await Task.WhenAll(task1, task2);
 var integerParallel = await task1;
 var textParallel = await task2;
-Console.WriteLine($"Here are results for non parallels. Integer:{integerParallel}, Text: {textParallel} .");
+Console.WriteLine($"Here are results for parallels. Integer:{integerParallel}, Text: {textParallel} .");
 stopwatch.Stop();
 var trulyAsyncTimeSpan = stopwatch.Elapsed;
 
 Console.WriteLine("Here comes results.");
-Console.WriteLine($"FakeAsync methods took {fakeAsyncTimeSpan.TotalSeconds} seconds");
-Console.WriteLine($"TrulyAsync methods took {trulyAsyncTimeSpan.TotalSeconds} seconds");
+Console.WriteLine($"Non Parallel methods took {fakeAsyncTimeSpan.TotalSeconds} seconds");
+Console.WriteLine($"Parallel methods took {trulyAsyncTimeSpan.TotalSeconds} seconds");
 Console.WriteLine("That's all folks!");
