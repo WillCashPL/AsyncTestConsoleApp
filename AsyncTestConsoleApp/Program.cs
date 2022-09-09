@@ -9,7 +9,7 @@ var integerNotParallel = await AsyncClass.WillWaitAndReturnInt(5, cancellationTo
 var textNotParallel = await AsyncClass.WillWaitAndReturnString(2, cancellationToken);
 Console.WriteLine($"Here are results for non parallels. Integer:{integerNotParallel}, Text: {textNotParallel} .");
 stopwatch.Stop();
-var fakeAsyncTimeSpan = stopwatch.Elapsed;
+var notParallelTimeSpan = stopwatch.Elapsed;
 
 stopwatch.Restart();
 var task1 = AsyncClass.WillWaitAndReturnInt(5, cancellationToken);
@@ -19,9 +19,9 @@ var integerParallel = await task1;
 var textParallel = await task2;
 Console.WriteLine($"Here are results for parallels. Integer:{integerParallel}, Text: {textParallel} .");
 stopwatch.Stop();
-var trulyAsyncTimeSpan = stopwatch.Elapsed;
+var parallelTimeSpan = stopwatch.Elapsed;
 
 Console.WriteLine("Here comes results.");
-Console.WriteLine($"Non Parallel methods took {fakeAsyncTimeSpan.TotalSeconds} seconds");
-Console.WriteLine($"Parallel methods took {trulyAsyncTimeSpan.TotalSeconds} seconds");
+Console.WriteLine($"Non Parallel methods took {notParallelTimeSpan.TotalSeconds} seconds");
+Console.WriteLine($"Parallel methods took {parallelTimeSpan.TotalSeconds} seconds");
 Console.WriteLine("That's all folks!");
